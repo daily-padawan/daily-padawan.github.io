@@ -18,8 +18,8 @@ function shuffle(array, seed) {
   return array;
 }
 
-var duplas = [
-  "Kauê e Vitor",
+var list = [
+  "Kauê e Vitor",  
   "Gabriel Arno/Joni",
   "Lucas e Victor",
   "Tomás e Israel",
@@ -40,23 +40,23 @@ var duplas = [
   "Mateus e Matheus",
   "Nathalie",
 ]
+const half = Math.ceil(list.length / 2);    
 
-var actualGroup = 1
+const firstHalf = list.splice(0, half)
+const secondHalf = list.splice(-half)
 
-for (let index = 0; index < duplas.length; index++) {
-  var el = document.getElementById('group' + actualGroup)
+firstHalf.forEach(function (dupla) {
+  var el = document.getElementById('group1')
   var duplaLi = document.createElement('li')
   duplaLi.className = 'list-group-item'
-  duplaLi.innerHTML = duplas[index]
+  duplaLi.innerHTML = dupla
   el.appendChild(duplaLi)
+})
 
-  if (actualGroup === 4) {
-    actualGroup = 0
-  }
-
-  actualGroup++;
-}
-
-var curr = new Date;
-var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
-console.log(shuffle(duplas, firstday.getDate()))
+secondHalf.forEach(function (dupla) {
+  var el = document.getElementById('group2')
+  var duplaLi = document.createElement('li')
+  duplaLi.className = 'list-group-item'
+  duplaLi.innerHTML = dupla
+  el.appendChild(duplaLi)
+})
